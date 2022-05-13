@@ -16,7 +16,7 @@ from textblob import TextBlob
 from PIL import Image
 
 # give a title to our app
-st.title('Above Zero Sentimental Analysis')
+st.title('CRMB Sentimental demo Analysis')
 
 # TAKE WEIGHT INPUT in kgs
 
@@ -48,20 +48,7 @@ from nltk.corpus import stopwords
 import string  
 
 def limpiar_puntuacion_stopwords(texto):
-  """
-  Funcion para limpiar el string
-
-  #Modificado de la siguiente fuente: https://antonio-fernandez-troyano.medium.com/nube-de-palabras-word-cloud-con-python-a-partir-de-varias-webs-111e94220822
-
-  Parameters 
-  ---------------
-  texto (str)       -> Texto a limpiar
-
-  Returns
-  ---------------
-  texto_limpio (str) -> Texto limpio luego de sacarle signos de puntuacion y stopwords
-
-  """
+ 
   puntuacion = []
   for s in string.punctuation:
       puntuacion.append(str(s))
@@ -160,9 +147,9 @@ stop_words = stopwords.words('spanish')
 if __name__ == "__main__": 
 
   st.title('☁️ Nube de palabras LinkedIn ☁️')
-  st.markdown("Creado por Above Zero")
+  st.markdown("Creado por CRMB")
 
-  st.markdown('## Presioná el botón **Browse files** y luego seleccioná tu archivo *Comment.csv*')
+  st.markdown('## Press button **Browse files** and select *analisis_comments.csv*')
   pressed = st.button('Ver archivo actual')
 
   # Cargamos template
