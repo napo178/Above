@@ -146,7 +146,7 @@ stop_words = stopwords.words('spanish')
 
 if __name__ == "__main__": 
 
-  st.title('☁️ Nube de palabras LinkedIn ☁️')
+  st.title('☁️ Wordcloud ☁️')
   st.markdown("Creado por CRMB")
 
   st.markdown('## Press button **Browse files** and select *analisis_comments.csv*')
