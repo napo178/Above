@@ -16,7 +16,14 @@ from textblob import TextBlob
 from PIL import Image
 
 # give a title to our app
-st.title('CRMB Sentimental demo Analysis')
+st.title('RAVN CRMB Sentimental Analysis')
+
+from PIL import Image
+image = Image.open('/Users/napoleonperez/Desktop/sentiment_app/TIK-TOK-ANALISIS-NLP/crmb.png')
+
+st.image(image, caption='Logo de CRMB', use_column_width=True)
+
+
 
 # TAKE WEIGHT INPUT in kgs
 
@@ -48,7 +55,9 @@ from nltk.corpus import stopwords
 import string  
 
 def limpiar_puntuacion_stopwords(texto):
- 
+  """
+  
+  """
   puntuacion = []
   for s in string.punctuation:
       puntuacion.append(str(s))
@@ -95,10 +104,10 @@ def generar_nube_de_palabras(input, uploded_file = None):
   if input == 'file':
     df_shares = pd.read_csv(uploded_file)
   elif input == 'template':
-    url = 'https://github.com/above0-sv/Text-mining/blob/main/analisis_comments_tiktok.csv'
+    url = 'https://github.com/crmbhq/crmb-phyton-machinelearning/blob/main/datasets/comments/cleancomments.csv'
     df_shares = pd.read_csv(url)
     
-  texto_de_publicaciones = df_shares['comment']
+  texto_de_publicaciones = df_shares['message']
   texto_de_publicaciones = [i for i in texto_de_publicaciones if type(i) == str]
 
   # Uso set para borrar repetidos
@@ -125,15 +134,15 @@ def generar_nube_de_palabras(input, uploded_file = None):
 
   st.markdown(title_alignment, unsafe_allow_html=True)
 
-  st.title("Wordcloud ")
+  st.title("Tu nube de palabras ")
   fig  # 👈 Draw a Matplotlib chart
   
   fig.savefig("nube.png")
   
-  st.markdown('### Download image')
+  st.markdown('### Descargar la imagen')
   with open("nube.png", "rb") as file:
     btn = st.download_button(
-      label="Save image",
+      label="Guardar imagen",
       data=file,
       file_name="nube.png",
       mime="image/png"
@@ -146,19 +155,21 @@ stop_words = stopwords.words('spanish')
 
 if __name__ == "__main__": 
 
-  st.title('☁️ Wordcloud ☁️')
-  st.markdown("Creado por CRMB")
+  st.title('☁️ Wordcloud Comments ☁️')
+  st.markdown("Creado por [Napoleon Perez]")
 
-  st.markdown('## Press button **Browse files** and select *analisis_comments.csv*')
-  
+  st.markdown('## Presioná el botón **Browse files** y luego seleccioná tu archivo *Comment.csv*')
+  pressed = st.button('Ver archivo actual')
 
+  # Cargamos template
+  if pressed:
+     generar_nube_de_palabras('template')
   
   # Subir archivo
-  uploaded_file = st.file_uploader("Select file")
+  uploaded_file = st.file_uploader("Select a file", type=["csv"])
 
   # Cargamos desde archivo
   if uploaded_file is not None:
     generar_nube_de_palabras('file', uploaded_file)
-
 
         
