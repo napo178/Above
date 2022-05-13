@@ -104,7 +104,7 @@ def generar_nube_de_palabras(input, uploded_file = None):
   if input == 'file':
     df_shares = pd.read_csv(uploded_file)
   elif input == 'template':
-    url = 'https://github.com/crmbhq/crmb-phyton-machinelearning/blob/main/datasets/comments/cleancomments.csv'
+    url = 'https://raw.githubusercontent.com/napo178/TIK-TOK-ANALISIS-NLP/main/analisis_comments_tiktok.csv'
     df_shares = pd.read_csv(url)
     
   texto_de_publicaciones = df_shares['message']
