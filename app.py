@@ -125,15 +125,15 @@ def generar_nube_de_palabras(input, uploded_file = None):
 
   st.markdown(title_alignment, unsafe_allow_html=True)
 
-  st.title("Tu nube de palabras ")
+  st.title("Wordcloud ")
   fig  # 👈 Draw a Matplotlib chart
   
   fig.savefig("nube.png")
   
-  st.markdown('### Descargar la imagen')
+  st.markdown('### Download image')
   with open("nube.png", "rb") as file:
     btn = st.download_button(
-      label="Guardar imagen",
+      label="Save image",
       data=file,
       file_name="nube.png",
       mime="image/png"
@@ -150,14 +150,14 @@ if __name__ == "__main__":
   st.markdown("Creado por CRMB")
 
   st.markdown('## Press button **Browse files** and select *analisis_comments.csv*')
-  pressed = st.button('Ver archivo actual')
+  
 
   # Cargamos template
   if pressed:
      generar_nube_de_palabras('template')
   
   # Subir archivo
-  uploaded_file = st.file_uploader("Seleccioná el archivo")
+  uploaded_file = st.file_uploader("Select file")
 
   # Cargamos desde archivo
   if uploaded_file is not None:
