@@ -152,9 +152,6 @@ if __name__ == "__main__":
   st.markdown('## Press button **Browse files** and select *analisis_comments.csv*')
   
 
-  # Cargamos template
-  if pressed:
-     generar_nube_de_palabras('template')
   
   # Subir archivo
   uploaded_file = st.file_uploader("Select file")
